@@ -20,7 +20,9 @@ export default function App() {
 
   if (cargando) {
     return (
-      <View style={styles.center}><ActivityIndicator size="large" color="#3B82F6" /></View>
+      <View style={styles.center}>
+        <ActivityIndicator size="large" color="#3B82F6" />
+      </View>
     );
   }
 
@@ -28,9 +30,11 @@ export default function App() {
     <View style={styles.container}>
       <StatusBar barStyle="dark-content" />
       <Text style={styles.titulo}>Lista de Usuarios (API)</Text>
+      
       <FlatList
         data={usuarios}
         keyExtractor={(item) => item.id.toString()}
+        contentContainerStyle={{ paddingBottom: 20 }}
         renderItem={({ item }) => (
           <View style={styles.item}>
             <Text style={styles.nombre}>{item.name}</Text>
@@ -43,11 +47,41 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#F1F5F9', paddingTop: 60, paddingHorizontal: 20 },
-  center: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#F1F5F9' },
-  titulo: { fontSize: 24, fontWeight: '800', marginBottom: 20, textAlign: 'center', color: '#1E293B' },
-  item: { backgroundColor: '#FFFFFF', padding: 18, borderRadius: 12, marginBottom: 12, elevation: 2 },
-  nombre: { fontSize: 16, fontWeight: '600', color: '#1E293B' },
-  email: { fontSize: 14, color: '#64748B', marginTop: 4 }
+  container: { 
+    flex: 1, 
+    backgroundColor: '#F1F5F9', 
+    paddingTop: Platform.OS === 'android' ? 40 : 60, 
+    paddingHorizontal: 20,
+    paddingBottom: Platform.OS === 'android' ? 20 : 20 
+  },
+  center: { 
+    flex: 1, 
+    justifyContent: 'center', 
+    alignItems: 'center', 
+    backgroundColor: '#F1F5F9' 
+  },
+  titulo: { 
+    fontSize: 24, 
+    fontWeight: '800', 
+    marginBottom: 20, 
+    textAlign: 'center', 
+    color: '#1E293B' 
+  },
+  item: { 
+    backgroundColor: '#FFFFFF', 
+    padding: 18, 
+    borderRadius: 12, 
+    marginBottom: 12, 
+    elevation: 2 
+  },
+  nombre: { 
+    fontSize: 16, 
+    fontWeight: '600', 
+    color: '#1E293B' 
+  },
+  email: { 
+    fontSize: 14, 
+    color: '#64748B', 
+    marginTop: 4 
+  }
 });
-
