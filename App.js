@@ -50,3 +50,4 @@ const styles = StyleSheet.create({
   nombre: { fontSize: 16, fontWeight: '600', color: '#1E293B' },
   email: { fontSize: 14, color: '#64748B', marginTop: 4 }
 });
+
